@@ -30,6 +30,7 @@ public class UserService {
 		ResponseVo response = new ResponseVo();
 		UserEntity user = repo.findByUserId(id);
 		String url = String.format("http://dept-service:9001/api/dept/%s", user.getDeptId());
+//		String url = String.format("http://localhost:9001/api/dept/%s", user.getDeptId());
 		Department dept = template.getForObject(url, Department.class);
 		response.setDept(dept);
 		response.setUser(user);
