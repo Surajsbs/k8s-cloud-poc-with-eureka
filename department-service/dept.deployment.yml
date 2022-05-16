@@ -1,0 +1,35 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: dept-service
+spec:
+  selector:
+    app: dept-service
+  ports:
+    - protocol: TCP
+      port: 9001
+      nodePort: 31001
+  type: NodePort
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+ name: dept-service
+ labels:
+  app: dept-service
+  rel: stable
+spec:
+ selector:
+  matchLabels:
+    app: dept-service
+ template:
+  metadata:
+   labels:
+    app: dept-service
+  spec:
+   containers:
+   - name: dept-service
+     image: surajsbs/dept-service
+     ports:
+     - containerPort: 9001
+

@@ -1,0 +1,35 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: registry-server
+spec:
+  selector:
+    app: registry-server
+  ports:
+    - protocol: TCP
+      port: 8761
+      nodePort: 32001
+  type: NodePort
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+ name: registry-server
+ labels:
+  app: registry-server
+  rel: stable
+spec:
+ selector:
+  matchLabels:
+    app: registry-server
+ template:
+  metadata:
+   labels:
+    app: registry-server
+  spec:
+   containers:
+   - name: registry-server
+     image: surajsbs/registry-server
+     ports:
+     - containerPort: 8761
+

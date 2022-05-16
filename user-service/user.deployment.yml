@@ -1,0 +1,35 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: user-service
+spec:
+  selector:
+    app: user-service
+  ports:
+    - protocol: TCP
+      port: 9002
+      nodePort: 31002
+  type: NodePort
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+ name: user-service
+ labels:
+  app: user-service
+  rel: stable
+spec:
+ selector:
+  matchLabels:
+    app: user-service
+ template:
+  metadata:
+   labels:
+    app: user-service
+  spec:
+   containers:
+   - name: user-service
+     image: surajsbs/user-service
+     ports:
+     - containerPort: 9002
+
