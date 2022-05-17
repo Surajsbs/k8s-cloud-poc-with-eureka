@@ -1,10 +1,10 @@
 kind: Service
 apiVersion: v1
 metadata:
-  name: user-service
+  name: emp-service
 spec:
   selector:
-    app: user-service
+    app: emp-service
   ports:
     - protocol: TCP
       port: 9002
@@ -14,22 +14,22 @@ spec:
 apiVersion: apps/v1
 kind: Deployment
 metadata:
- name: user-service
+ name: emp-service
  labels:
-  app: user-service
+  app: emp-service
   rel: stable
 spec:
  selector:
   matchLabels:
-    app: user-service
+    app: emp-service
  template:
   metadata:
    labels:
-    app: user-service
+    app: emp-service
   spec:
    containers:
-   - name: user-service
-     image: surajsbs/user-service
+   - name: emp-service
+     image: surajsbs/emp-service
      ports:
      - containerPort: 9002
 

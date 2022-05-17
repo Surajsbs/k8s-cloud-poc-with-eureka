@@ -1,9 +1,18 @@
-package com.develop.user.entity;
+package com.develop.emp.entity;
+
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class Department {
+	@JsonProperty("department_id")
 	private long deptId;
+	
+	@JsonProperty("department_name")
 	private String deptName;
+	
+	@JsonProperty("department_address")
 	private String deptAddress;
+	
+	@JsonProperty("department_code")
 	private String deptCode;
 
 	public long getDeptId() {

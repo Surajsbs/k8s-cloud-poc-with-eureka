@@ -1,18 +1,31 @@
-package com.develop.user.entity;
+package com.develop.emp.entity;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+import org.apache.commons.lang3.builder.ReflectionToStringBuilder;
+
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 @Entity
-public class UserEntity {
+public class EmployeeEntity {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@JsonProperty("employee_id")
 	private Long userId;
+
+	@JsonProperty("first_name")
 	private String firstName;
+
+	@JsonProperty("last_name")
 	private String lastName;
+
+	@JsonProperty("email_id")
 	private String email;
+
+	@JsonProperty("department_id")
 	private Long deptId;
 
 	public Long getUserId() {
@@ -53,6 +66,11 @@ public class UserEntity {
 
 	public void setDeptId(Long deptId) {
 		this.deptId = deptId;
+	}
+
+	@Override
+	public String toString() {
+		return ReflectionToStringBuilder.toString(this);
 	}
 
 }

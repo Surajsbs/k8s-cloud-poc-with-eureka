@@ -1,14 +1,14 @@
-package com.develop.user.entity;
+package com.develop.emp.entity;
 
 public class ResponseVo {
-	private UserEntity user;
+	private EmployeeEntity user;
 	private Department dept;
 
-	public UserEntity getUser() {
+	public EmployeeEntity getUser() {
 		return user;
 	}
 
-	public void setUser(UserEntity user) {
+	public void setUser(EmployeeEntity user) {
 		this.user = user;
 	}
 

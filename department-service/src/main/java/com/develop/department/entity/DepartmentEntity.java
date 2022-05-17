@@ -5,14 +5,23 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 @Entity
 public class DepartmentEntity {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@JsonProperty("department_id")
 	private long deptId;
+	
+	@JsonProperty("department_name")
 	private String deptName;
+	
+	@JsonProperty("department_address")
 	private String deptAddress;
+	
+	@JsonProperty("department_code")
 	private String deptCode;
 
 	public long getDeptId() {

@@ -1,5 +1,7 @@
 package com.develop.department.api;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -25,6 +27,16 @@ public class DepartmentController {
 	@GetMapping(value = "/{id}")
 	public DepartmentEntity find(@PathVariable(name = "id") Long id) {
 		return service.find(id);
+	}
+
+	@GetMapping(value = "/fetchAll")
+	public List<DepartmentEntity> fetchAll() {
+		return service.fetchAll();
+	}
+
+	@GetMapping(value = "/check/{id}")
+	public Boolean check(@PathVariable(name = "id") Long id) {
+		return service.check(id);
 	}
 
 }

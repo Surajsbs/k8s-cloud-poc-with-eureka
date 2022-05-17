@@ -1,5 +1,6 @@
 package com.develop.department.service;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,6 +25,19 @@ public class DepartmentService {
 	public DepartmentEntity find(Long id) {
 		Optional<DepartmentEntity> dept = repo.findByDeptId(id);
 		return dept.get();
+	}
+
+	public boolean check(Long id) {
+		try {
+			find(id);
+			return true;
+		} catch (Exception e) {
+			return false;
+		}
+	}
+	
+	public List<DepartmentEntity> fetchAll() {
+		return repo.findAll();
 	}
 
 }
