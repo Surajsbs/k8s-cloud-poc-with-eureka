@@ -14,7 +14,7 @@ spring:
     database-platform: org.hibernate.dialect.H2Dialect
     hibernate:
       ddl-auto: update
+      
 dept-service:
-  port: 9001
-#  url: http://dept-service
-  url: http://localhost
+  save-url: http://localhost:9001/api/dept/check
+  fetch-url: http://localhost:9001/api/dept

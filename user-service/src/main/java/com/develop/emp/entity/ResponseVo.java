@@ -1,15 +1,15 @@
 package com.develop.emp.entity;
 
 public class ResponseVo {
-	private EmployeeEntity user;
+	private EmployeeEntity emp;
 	private Department dept;
 
-	public EmployeeEntity getUser() {
-		return user;
+	public EmployeeEntity getEmp() {
+		return emp;
 	}
 
-	public void setUser(EmployeeEntity user) {
-		this.user = user;
+	public void setEmp(EmployeeEntity emp) {
+		this.emp = emp;
 	}
 
 	public Department getDept() {

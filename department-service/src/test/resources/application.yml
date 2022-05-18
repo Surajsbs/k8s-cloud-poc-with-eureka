@@ -1,12 +1,12 @@
-
 server:
-  port: 9001
-
+  port: 9002
+  servlet:
+    context-path: /api/emp
 spring:
   application:
-    name: dept-service      
+    name: user-service
   datasource:
-    url: jdbc:h2:mem:dept
+    url: jdbc:h2:mem:user
     driver-class-name: org.h2.Driver
     username: sa
     password: 

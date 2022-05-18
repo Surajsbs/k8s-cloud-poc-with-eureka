@@ -14,7 +14,7 @@ public class EmployeeEntity {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@JsonProperty("employee_id")
-	private Long userId;
+	private Long empId;
 
 	@JsonProperty("first_name")
 	private String firstName;
@@ -28,12 +28,12 @@ public class EmployeeEntity {
 	@JsonProperty("department_id")
 	private Long deptId;
 
-	public Long getUserId() {
-		return userId;
+	public Long getEmpId() {
+		return empId;
 	}
 
-	public void setUserId(Long userId) {
-		this.userId = userId;
+	public void setEmpId(Long empId) {
+		this.empId = empId;
 	}
 
 	public String getFirstName() {

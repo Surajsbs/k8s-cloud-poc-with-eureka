@@ -25,11 +25,11 @@ public class EmployeeService {
 
 	private RestTemplate template;
 
-	@Value("${dept-service.url}")
-	String deptServiceUrl;
-
-	@Value("${dept-service.port}")
-	String deptServicePort;
+	@Value("${dept-service.save-url}")
+	String deptSaveUrl;
+	
+	@Value("${dept-service.fetch-url}")
+	String deptFetchUrl;
 
 	@Autowired
 	public EmployeeService(RestTemplate template) {
@@ -37,9 +37,8 @@ public class EmployeeService {
 	}
 
 	public ServiceResponse save(List<EmployeeEntity> emps) {
-		String url = deptServiceUrl + ":" + deptServicePort + "/api/dept/check/";
 		List<EmployeeEntity> list = emps.stream()
-				.filter(user -> template.getForObject(url + user.getDeptId(), Boolean.class))
+				.filter(user -> template.getForObject(deptSaveUrl + "/" + user.getDeptId(), Boolean.class))
 				.collect(Collectors.toList());
 		emps = repo.saveAll(list);
 		return new ServiceResponse(ResponseMapper.INSTANCE.map(emps));
@@ -47,12 +46,12 @@ public class EmployeeService {
 
 	public ResponseVo findEmp(Long id) {
 		ResponseVo response = new ResponseVo();
-		EmployeeEntity user = repo.findByUserId(id);
-		if (Objects.nonNull(user)) {
-			String url = String.format(deptServiceUrl + ":" + deptServicePort + "/api/dept/%s", user.getDeptId());
+		EmployeeEntity emp = repo.findByEmpId(id);
+		if (Objects.nonNull(emp)) {
+			String url = String.format(deptFetchUrl + "/%s", emp.getDeptId());
 			Department dept = template.getForObject(url, Department.class);
 			response.setDept(dept);
-			response.setUser(user);
+			response.setEmp(emp);
 			return response;
 		} else {
 			throw new com.develop.emp.error.ServiceException("No employee found for given id, " + id,
@@ -62,7 +61,6 @@ public class EmployeeService {
 
 	public List<EmployeeEntity> fetchAll() {
 		return repo.findAll();
-
 	}
 
 }
