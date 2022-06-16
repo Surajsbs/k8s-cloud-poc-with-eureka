@@ -13,7 +13,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class EmployeeEntity {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@JsonProperty("employee_id")
 	private Long empId;
 
 	@JsonProperty("first_name")

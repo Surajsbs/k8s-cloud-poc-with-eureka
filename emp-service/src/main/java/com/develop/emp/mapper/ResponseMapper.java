@@ -13,7 +13,7 @@ import com.develop.emp.reponse.Association;
 public interface ResponseMapper {
 	ResponseMapper INSTANCE = Mappers.getMapper(ResponseMapper.class);
 
-	@Mapping(target = "employee_id", source = "employee_id")
+	@Mapping(target = "userId", source = "empId")
 	@Mapping(target = "department_id", source = "department_id")
 	List<Association> map(List<EmployeeEntity> users);
 

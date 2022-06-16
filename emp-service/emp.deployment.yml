@@ -29,7 +29,7 @@ spec:
   spec:
    containers:
    - name: emp-service
-     image: surajsbs/emp-service
+     image: surajsbs/emp-service:1.2
      ports:
      - containerPort: 9002
 

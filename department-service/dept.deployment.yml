@@ -29,7 +29,7 @@ spec:
   spec:
    containers:
    - name: dept-service
-     image: surajsbs/dept-service
+     image: surajsbs/dept-service:1.1
      ports:
      - containerPort: 9001
 
