@@ -14,5 +14,7 @@ spring:
       ddl-auto: update
       
 dept-service:
-  save-url: http://dept-service:9001/api/dept/check
-  fetch-url: http://dept-service:9001/api/dept
+#  save-url: http://dept-service:9001/api/dept/check
+#  fetch-url: http://dept-service:9001/api/dept
+  check-url: http://localhost:9001/api/dept/check
+  fetch-url: http://localhost:9001/api/dept
