@@ -67,15 +67,14 @@ public class DepartmentControllerTest {
 		Mockito.when(service.find(ArgumentMatchers.any())).thenReturn(dept);
 
 		mockMvc.perform(get("/api/dept/1").accept(MediaType.APPLICATION_JSON_VALUE)).andExpect(status().isOk())
-				.andExpect(jsonPath("$.response.department_code", is("204")))
-				.andExpect(jsonPath("$.response.department_id", is(1)));
+				.andExpect(jsonPath("$.department_code", is("204"))).andExpect(jsonPath("$.department_id", is(1)));
 	}
 
 	@Test
 	public void testNoDeptFOund() throws JsonProcessingException, Exception {
 		Mockito.when(service.find(ArgumentMatchers.any())).thenReturn(null);
 		mockMvc.perform(get("/api/dept/1").accept(MediaType.APPLICATION_JSON_VALUE)).andExpect(status().isNotFound())
-				.andExpect(jsonPath("$.response", is(ErrorCode.NOT_FOUND.getMsg())));
+				.andExpect(jsonPath("$", is(ErrorCode.NOT_FOUND.getMsg())));
 	}
 
 	@Test
@@ -114,8 +113,8 @@ public class DepartmentControllerTest {
 	@Test
 	public void testCheckDeptExistFail() throws JsonProcessingException, Exception {
 		Mockito.when(service.check(ArgumentMatchers.any())).thenReturn(false);
-		mockMvc.perform(get("/api/dept/check/1").accept(MediaType.APPLICATION_JSON_VALUE))
-				.andExpect(status().isNotFound()).andExpect(jsonPath("$.response", is(false)));
+		mockMvc.perform(get("/api/dept/check/1").accept(MediaType.APPLICATION_JSON_VALUE)).andExpect(status().isOk())
+				.andExpect(jsonPath("$.response", is(false)));
 	}
 
 	private String toJson(Object object) throws JsonProcessingException {
