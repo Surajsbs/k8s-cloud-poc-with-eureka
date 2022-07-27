@@ -1,0 +1,41 @@
+Set-Alias -Name k -Value kubectl
+kubectl config view -o jsonpath='{.users[].name}'    # display the first user
+kubectl config view -o jsonpath='{.users[*].name}'   # get a list of users
+kubectl config get-contexts                          # display list of contexts
+kubectl config current-context                       # display the current-context
+kubectl config use-context my-cluster-name           # set the default context to my-cluster-name
+
+ 
+kubectl run [podname] --image=[imagename]
+docker build -t [tagname] [location]
+kubectl get pods
+kubectl port-forward [pod-name] [external-port]:[internal-port]
+k port-forward deployment.apps/dept-service [external-port]:[internal-port]
+kubectl delete pod/deployment [pod-name/deployment-name]
+kubectl get events
+kubectl create -f [pods yaml file name] --save-config
+kubectl create -f [pods yaml file name]
+kubectl describe deployment [deployment-name]
+
+docker build -t user-service .
+docker build -t surajsbs/dept-service:1.2 .
+docker tag user-service-app surajsbs/user-service-app
+docker push surajsbs/user-service-app
+
+
+
+https://www.youtube.com/watch?v=SzbeDqBSRkc
+https://www.youtube.com/watch?v=icyHIjfgYRY
+
+docker build -t registry-server .
+docker tag registry-server surajsbs/registry-server
+docker push surajsbs/registry-server
+
+docker build -t emp-service .
+docker tag emp-service surajsbs/emp-service:1.2
+docker push surajsbs/emp-service:1.2
+
+docker build -t dept-service .
+docker tag dept-service surajsbs/dept-service:1.1
+docker push surajsbs/dept-service:1.1
+
